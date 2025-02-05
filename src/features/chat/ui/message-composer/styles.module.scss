@@ -1,0 +1,12 @@
+@use '/src/shared/styles/abstracts/variables' as main;
+
+.composer {
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: 5px;
+  z-index: 150;
+  background-color: main.$color-bg-secondary;
+  padding: 9px 20px;
+  width: 100%;
+}

@@ -1,0 +1,1 @@
+export { OpponentInfo } from './ui';

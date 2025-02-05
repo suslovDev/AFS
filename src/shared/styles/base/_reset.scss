@@ -1,0 +1,118 @@
+@use '../abstracts/variables';
+
+body,
+html {
+  min-height: -webkit-fill-available;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+body {
+  background: linear-gradient(#00a783 127px, transparent 127px), #dad7d3;
+  padding: 0;
+  color: variables.$color-text-primary;
+  font-weight: 400;
+  font-size: variables.$font-medium;
+  font-family: Roboto, sans-serif;
+}
+
+:global(#root) {
+  height: 100%;
+  min-height: 100%;
+}
+
+a {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+figure {
+  margin: 0;
+}
+
+img {
+  border-radius: 4px;
+  object-fit: cover;
+  object-position: top;
+}
+
+input::-moz-focus-inner {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+ul,
+ol,
+dd {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+h1 {
+  font-size: variables.$font-large;
+}
+
+p {
+  margin: 0;
+  font-size: inherit;
+}
+
+cite {
+  font-style: normal;
+}
+
+fieldset {
+  margin: 0;
+  border-width: 0;
+  padding: 0;
+}
+
+input[type='text'],
+input[type='number'],
+input[type='number']:focus,
+input[type='text']:focus {
+  outline: none !important;
+}
+
+input[type='radio'] {
+  appearance: initial;
+}
+
+textarea {
+  outline: none !important;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

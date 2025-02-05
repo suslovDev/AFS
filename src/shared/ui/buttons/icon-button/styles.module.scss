@@ -1,0 +1,28 @@
+@use '/src/shared/styles/abstracts/variables' as main;
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: inherit;
+  width: 40px;
+  height: 40px;
+
+  &.dark {
+    color: main.$color-text-placeholder;
+  }
+
+  &.light {
+    color: main.$color-bg-primary;
+  }
+
+  &.large {
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

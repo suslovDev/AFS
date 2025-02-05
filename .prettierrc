@@ -1,0 +1,22 @@
+{
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "tabWidth": 2,
+  "printWidth": 100,
+  "semi": true,
+  "endOfLine": "auto",
+  "useTabs": false,
+  "plugins": ["@ianvs/prettier-plugin-sort-imports", "prettier-plugin-css-order"],
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^@pages/(.*)$",
+    "^@entites/(.*)$",
+    "^@widgets/(.*)$",
+    "^@features/(.*)$",
+    "^@shared/(.*)$",
+    "^@src",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"]
+}

@@ -1,0 +1,31 @@
+@use '/src/shared/styles/abstracts/variables' as main;
+
+.container {
+  margin: auto;
+  padding-top: 200px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  font-size: main.$font-large;
+
+  & .field {
+    padding: 10px;
+  }
+
+  & .action {
+    cursor: pointer;
+    border-radius: 12px;
+    background-color: main.$color-bg-btn;
+    padding: 10px;
+    color: main.$color-bg-primary;
+    text-align: center;
+
+    &:hover {
+      filter: brightness(1.1);
+      transition: all 0.3s;
+      box-shadow: 0 2px 1px rgba(11, 20, 26, 0.13);
+    }
+  }
+}
