@@ -1,50 +1,57 @@
-# React + TypeScript + Vite
+# Инструкция по локальному запуску проекта React (Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Этот документ содержит инструкции по локальному запуску проекта React, собранного с использованием Vite.
 
-Currently, two official plugins are available:
+## Предварительные требования
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Перед началом убедитесь, что на вашем компьютере установлено следующее программное обеспечение:
 
-## Expanding the ESLint configuration
+- **Node.js:** (рекомендуется последняя LTS версия). Скачать можно здесь: [https://nodejs.org/](https://nodejs.org/)
+- **npm:** (обычно устанавливается вместе с Node.js). Проверить версию можно командой `npm -v` в терминале.
+- **Git:** (для клонирования репозитория). Скачать можно здесь: [https://git-scm.com/](https://git-scm.com/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Инструкция по запуску
 
-- Configure the top-level `parserOptions` property like this:
+1.  **Клонирование репозитория:**
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+    Откройте терминал и перейдите в директорию, где вы хотите сохранить проект. Выполните команду:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+    ```bash
+    git clone <URL вашего репозитория>
+    ```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
+    Замените `<URL репозитория>` на фактический URL репозитория Git.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-});
-```
+2.  **Переход в директорию проекта:**
+
+    Перейдите в директорию склонированного проекта:
+
+    ```bash
+    cd <имя директории проекта>
+    ```
+
+    Замените `<имя директории проекта>` на имя директории, созданной при клонировании репозитория.
+
+3.  **Установка зависимостей:**
+
+    В директории проекта выполните команду для установки необходимых зависимостей:
+
+    ```bash
+    npm install
+    ```
+
+    Эта команда прочитает файл `package.json` и установит все указанные в нем библиотеки и пакеты.
+
+4.  **Запуск проекта в режиме разработки:**
+
+    После установки зависимостей запустите проект в режиме разработки с помощью команды:
+
+    ```bash
+    npm run dev
+    ```
+
+    Эта команда запустит локальный сервер разработки Vite. В терминале будет отображен адрес, по которому доступен проект: `http://localhost:5173`.
+
+5.  **Открытие проекта в браузере:**
+
+    Откройте указанный адрес в вашем браузере. Вы должны увидеть работающее приложение React.
