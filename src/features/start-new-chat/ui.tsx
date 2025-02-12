@@ -1,5 +1,5 @@
 import { setPhone } from '@entities/opponent/models';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Container, Input } from '@shared/ui';
@@ -8,18 +8,21 @@ import st from './styles.module.scss';
 
 export const StartNewChat = (): JSX.Element => {
   const [opponentPhone, setOpponentPhone] = useState('');
-
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(
+    (e: React.FormEvent) => {
+      e.preventDefault();
 
-    dispatch(setPhone(opponentPhone));
+      const formattedPhone = formatPhoneNumber(opponentPhone, 'api');
 
-    navigate(`/chat/${opponentPhone}@c.us`);
-  };
+      dispatch(setPhone(formattedPhone));
+
+      navigate(`/chat/${formattedPhone}@c.us`);
+    },
+    [opponentPhone, dispatch, navigate]
+  );
 
   return (
     <Container className={st.container}>
@@ -28,7 +31,7 @@ export const StartNewChat = (): JSX.Element => {
           <Input
             type="tel"
             value={opponentPhone}
-            onChange={(e) => setOpponentPhone(formatPhoneNumber(e.target.value, 'api'))}
+            onChange={(e) => setOpponentPhone(e.target.value)}
             placeholder="Телефон собеседника"
           />
         </div>
