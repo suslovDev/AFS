@@ -6,7 +6,11 @@ import { useSendMessage } from '@features/chat/send-message/lib';
 import { MessageInput } from '../ui/message-input';
 import st from './styles.module.scss';
 
-export const MessageComposer = (): JSX.Element => {
+interface Props {
+  chatId: string;
+}
+
+export const MessageComposer = ({ chatId }: Props): JSX.Element => {
   const [textValue, setTextValue] = useState('');
 
   const handleInputMessage = useCallback((value: string) => {
@@ -19,7 +23,7 @@ export const MessageComposer = (): JSX.Element => {
     setTextValue('');
   }, []);
 
-  const { sendMessage } = useSendMessage(handleSuccessSend);
+  const { sendMessage } = useSendMessage(chatId, handleSuccessSend);
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {

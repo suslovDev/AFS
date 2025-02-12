@@ -14,7 +14,7 @@ export const Chat = ({ id }: Props): JSX.Element => {
       </div>
 
       <section className={st.messages}>{id && <Messagelist chatId={id} />}</section>
-      <MessageComposer />
+      <MessageComposer chatId={id} />
     </div>
   );
 };

@@ -1,16 +1,13 @@
 import { useAuth } from '@app/providers/auth';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 
-export const useSendMessage = (onSendSuccess?: () => void) => {
+export const useSendMessage = (chatId: string, onSendSuccess?: () => void) => {
   const { idInstance, apiTokenInstance } = useAuth();
-
-  const phoneNumber = useSelector((state: RootState) => state.opponent.phone);
 
   const [idMessage, setIdMesage] = useState('');
 
   const sendMessage = async (message: string) => {
-    if (!idInstance || !apiTokenInstance || !phoneNumber) {
+    if (!idInstance || !apiTokenInstance || !chatId) {
       console.error('Необходимо ввести учетные данные и телефон собеседника!');
       return;
     }
@@ -24,7 +21,7 @@ export const useSendMessage = (onSendSuccess?: () => void) => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            chatId: phoneNumber + '@c.us',
+            chatId,
             message: message,
           }),
         }
@@ -38,5 +35,5 @@ export const useSendMessage = (onSendSuccess?: () => void) => {
     }
   };
 
-  return { sendMessage, idMessage, opponentPhone: phoneNumber };
+  return { sendMessage, idMessage };
 };
