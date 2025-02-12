@@ -7,6 +7,7 @@ export {
   MessageOut,
   OpponentInfo,
   Messagelist,
+  ChatList,
 } from './ui';
 export { AddExpression } from './add-expression';
 export { Attach } from './attach';

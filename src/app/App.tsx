@@ -1,18 +1,16 @@
-import { AppRoutes } from './AppRoutes';
-import { AuthProvider } from './providers/AuthProvider';
-import { PhoneProvider } from './providers/PhoneProvider';
+import { AuthProvider } from './providers/auth';
+import { Router } from './providers/router';
+import { Store } from './providers/store';
 import './styles/index.scss';
 
 export const App = (): JSX.Element => {
   return (
-    <>
+    <Store>
       <AuthProvider>
-        <PhoneProvider>
-          <div className="App">
-            <AppRoutes />
-          </div>
-        </PhoneProvider>
+        <div className="App">
+          <Router />
+        </div>
       </AuthProvider>
-    </>
+    </Store>
   );
 };

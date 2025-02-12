@@ -1,29 +1,20 @@
-import { useChat } from '@features/chat/lib';
-import { ChangeOpponent, ChatContainer, MessageComposer, OpponentInfo } from '../../features/chat';
+import { MessageComposer, OpponentInfo } from '../../features/chat';
 import { Messagelist } from '../../features/chat/ui';
 import st from './styles.module.scss';
 
-export const Chat = (): JSX.Element => {
-  const { messages, addNewMessage } = useChat();
+interface Props {
+  id: string;
+}
 
+export const Chat = ({ id }: Props): JSX.Element => {
   return (
-    <ChatContainer>
-      <div className={st.chat}>
-        <div className={st.change}>
-          <ChangeOpponent />
-        </div>
-        <header className={st.opponent}>
-          <OpponentInfo />
-        </header>
-
-        <section className={st.messages}>
-          <Messagelist messages={messages} />
-        </section>
-
-        <footer className={st.composer}>
-          <MessageComposer onAddMessage={addNewMessage} />
-        </footer>
+    <div className={st.chat}>
+      <div className={st.opponent}>
+        <OpponentInfo chatId={id} />
       </div>
-    </ChatContainer>
+
+      <section className={st.messages}>{id && <Messagelist chatId={id} />}</section>
+      <MessageComposer />
+    </div>
   );
 };

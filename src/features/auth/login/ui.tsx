@@ -1,4 +1,4 @@
-import { useAuth } from '@app/providers/AuthProvider';
+import { useAuth } from '@app/providers/auth';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Input } from '@shared/ui';

@@ -1,12 +1,12 @@
-import { usePhone } from '@app/providers/PhoneProvider';
+import { useNavigate } from 'react-router-dom';
 import { NewChat } from '@shared/icons';
 import { IconButton } from '@shared/ui';
 
 export const ChangeOpponent = (): JSX.Element => {
-  const { setPhoneNumber } = usePhone();
+  const navigate = useNavigate();
 
   return (
-    <IconButton onClick={() => setPhoneNumber(null)} size="large" variant="light">
+    <IconButton onClick={() => navigate('/')}>
       <NewChat />
     </IconButton>
   );

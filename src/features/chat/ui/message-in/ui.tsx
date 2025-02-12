@@ -6,6 +6,8 @@ interface Props {
 }
 
 export const MessageIn = ({ text }: Props): JSX.Element => {
+  if (!text) return <></>;
+
   return (
     <div className={st.message}>
       <span className={st.tail}>

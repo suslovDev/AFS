@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { AuthPage, ChatPage } from '../pages';
-import { useAuth } from './providers/AuthProvider';
+import { StartNewChat } from '@features/start-new-chat';
+import { AuthPage, ChatPage } from '../../pages';
+import { useAuth } from './auth';
 
 const PrivateRoute: React.FC<{ element: React.ReactElement }> = ({ element }) => {
   const { isAuth } = useAuth();
@@ -12,10 +13,11 @@ const PrivateRoute: React.FC<{ element: React.ReactElement }> = ({ element }) =>
   return element;
 };
 
-export const AppRoutes = () => {
+export const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<PrivateRoute element={<ChatPage />} />} />
+      <Route path="/" element={<PrivateRoute element={<StartNewChat />} />} />
+      <Route path="chat/:id" element={<PrivateRoute element={<ChatPage />} />} />
       <Route path="/login" element={<AuthPage />} />
     </Routes>
   );

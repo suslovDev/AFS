@@ -1,20 +1,13 @@
 import { Send } from '@shared/icons';
 import { IconButton } from '@shared/ui';
-import { useSendMessage } from './lib';
 
 interface Props {
-  message: {
-    text: string;
-    type: 'outgoing' | 'incoming';
-  };
-  onSuccessSend: () => void;
+  onSendMessage: () => void;
 }
 
-export const SendMessage = ({ message, onSuccessSend }: Props): JSX.Element => {
-  const { sendMessage } = useSendMessage(onSuccessSend);
-
+export const SendMessage = ({ onSendMessage }: Props): JSX.Element => {
   return (
-    <IconButton onClick={() => sendMessage(message.text)}>
+    <IconButton onClick={onSendMessage}>
       <Send />
     </IconButton>
   );

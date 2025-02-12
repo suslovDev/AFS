@@ -6,32 +6,20 @@
   background:
     url('https://static.whatsapp.net/rsrc.php/v4/yl/r/gi_DckOUM5a.png'),
     #eae6df repeat;
+  width: 100%;
   height: 100vh;
 
-  & .change {
-    position: absolute;
-    top: 10px;
-    left: -40px;
-    z-index: 300;
-  }
-
   & .opponent {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     z-index: 100;
-    width: 100%;
   }
 
   & .messages {
     padding: 70px 63px 0;
+    height: 100%;
     overflow-y: auto;
     scrollbar-width: none;
-  }
-  & .composer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
   }
 }

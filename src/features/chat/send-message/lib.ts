@@ -1,9 +1,13 @@
-import { useAuth } from '@app/providers/AuthProvider';
-import { usePhone } from '@app/providers/PhoneProvider';
+import { useAuth } from '@app/providers/auth';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-export const useSendMessage = (onSendSuccess: () => void) => {
+export const useSendMessage = (onSendSuccess?: () => void) => {
   const { idInstance, apiTokenInstance } = useAuth();
-  const { phoneNumber } = usePhone();
+
+  const phoneNumber = useSelector((state: RootState) => state.opponent.phone);
+
+  const [idMessage, setIdMesage] = useState('');
 
   const sendMessage = async (message: string) => {
     if (!idInstance || !apiTokenInstance || !phoneNumber) {
@@ -26,11 +30,13 @@ export const useSendMessage = (onSendSuccess: () => void) => {
         }
       );
       if (!response.ok) throw response;
-      onSendSuccess();
+      const { idMessage } = await response.json();
+      setIdMesage(idMessage);
+      onSendSuccess && onSendSuccess();
     } catch (e) {
       console.error(e);
     }
   };
 
-  return { sendMessage, opponentPhone: phoneNumber };
+  return { sendMessage, idMessage, opponentPhone: phoneNumber };
 };

@@ -1,10 +1,10 @@
 import { useAuth } from '@app/providers/auth';
 import { useEffect, useState } from 'react';
 
-export const useOpponent = (phone: string | null) => {
+export const useAvatar = (chatId: string | null) => {
   const { idInstance, apiTokenInstance } = useAuth();
 
-  const [avatarUrl, setAvatarUrl] = useState('');
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
 
   useEffect(() => {
     const getAvatar = async () => {
@@ -17,7 +17,7 @@ export const useOpponent = (phone: string | null) => {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              chatId: phone + '@c.us',
+              chatId,
             }),
           }
         );
@@ -25,11 +25,12 @@ export const useOpponent = (phone: string | null) => {
         setAvatarUrl(result.urlAvatar);
       } catch (error) {
         console.error('Ошибка получения аватара!', error);
+        setAvatarUrl(null);
       }
     };
 
     getAvatar();
-  }, [phone]);
+  }, [chatId]);
 
   return { avatarUrl };
 };

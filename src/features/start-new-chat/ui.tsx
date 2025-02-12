@@ -1,17 +1,24 @@
-import { usePhone } from '@app/providers/PhoneProvider';
+import { setPhone } from '@entities/opponent/models';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Container, Input } from '@shared/ui';
 import { formatPhoneNumber } from '@shared/utils';
 import st from './styles.module.scss';
 
 export const StartNewChat = (): JSX.Element => {
-  const { setPhoneNumber } = usePhone();
-  const [phone, setPhone] = useState('');
+  const [opponentPhone, setOpponentPhone] = useState('');
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setPhoneNumber(phone);
-    localStorage.setItem('opponentPhone', phone);
+
+    dispatch(setPhone(opponentPhone));
+
+    navigate(`/chat/${opponentPhone}@c.us`);
   };
 
   return (
@@ -20,8 +27,8 @@ export const StartNewChat = (): JSX.Element => {
         <div className={st.field}>
           <Input
             type="tel"
-            value={phone}
-            onChange={(e) => setPhone(formatPhoneNumber(e.target.value, 'api'))}
+            value={opponentPhone}
+            onChange={(e) => setOpponentPhone(formatPhoneNumber(e.target.value, 'api'))}
             placeholder="Телефон собеседника"
           />
         </div>

@@ -1,16 +1,19 @@
-import { IMessage } from '../../types';
+import { selectMessagesByChatId } from '@entities/messages/models';
+import { useSelector } from 'react-redux';
 import { MessageIn } from '../message-in';
 import { MessageOut } from '../message-out';
 import st from './styles.module.scss';
 
 interface Props {
-  messages: IMessage[];
+  chatId: string;
 }
 
-export const Messagelist = ({ messages }: Props): JSX.Element => {
+export const Messagelist = ({ chatId }: Props): JSX.Element => {
+  const messages = useSelector((state: RootState) => selectMessagesByChatId(state, chatId));
+
   return (
     <ul className={st.list}>
-      {messages.map(({ text, type, idMessage }) =>
+      {messages?.map(({ text, type, idMessage }) =>
         type === 'incoming' ? (
           <MessageIn text={text} key={idMessage} />
         ) : (

@@ -1,9 +1,22 @@
-import { usePhone } from '@app/providers/PhoneProvider';
+import { useParams } from 'react-router-dom';
 import { Chat } from '@widgets/chat';
-import { StartNewChat } from '@features/start-new-chat';
+import { ChatContainer, ChatList } from '@features/chat';
+import { useIncomingMessage } from '@features/chat/lib';
+import st from './styles.module.scss';
 
 export const ChatPage = (): JSX.Element => {
-  const { phoneNumber } = usePhone();
+  const { id } = useParams<{ id: string }>();
 
-  return <>{!phoneNumber ? <StartNewChat /> : <Chat />}</>;
+  const chatId = id || '';
+
+  useIncomingMessage();
+
+  return (
+    <ChatContainer className={st.container}>
+      <>
+        <ChatList />
+        <Chat id={chatId} />
+      </>
+    </ChatContainer>
+  );
 };
