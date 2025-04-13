@@ -1,0 +1,27 @@
+@use '@shared/styles/main' as main;
+
+.image {
+  display: inline-block;
+  position: relative;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  width: 144px;
+  min-width: 144px;
+  height: 108px;
+  overflow: hidden;
+
+  &:hover {
+    border-color: main.$color-border-photo-hover;
+  }
+
+  &__action {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  &__placeholder {
+    width: 100%;
+    height: auto;
+  }
+}

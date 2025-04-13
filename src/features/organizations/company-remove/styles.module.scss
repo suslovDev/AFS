@@ -1,0 +1,5 @@
+@use '@shared/styles/main' as main;
+
+.icon {
+  color: main.$color-delete-button;
+}

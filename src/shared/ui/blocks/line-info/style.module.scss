@@ -1,0 +1,24 @@
+@use '@shared/styles/main' as main;
+
+.line {
+  display: flex;
+  align-items: center;
+  height: 34px;
+
+  &__title {
+    width: 100%;
+    max-width: 172px;
+    color: main.$color-text-secondary;
+    font-size: main.$font-small;
+    letter-spacing: 0.25px;
+  }
+  &__content {
+    width: 100%;
+    letter-spacing: 0.3px;
+
+    /*     span {
+      padding: 0 12px;
+      color: main.$color-text-secondary;
+    } */
+  }
+}

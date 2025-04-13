@@ -1,0 +1,1 @@
+export { ChangeNameCopmany } from './ui';

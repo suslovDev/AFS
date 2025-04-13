@@ -1,0 +1,30 @@
+@use '@shared/styles/main' as main;
+
+.wrapper {
+  position: relative;
+}
+
+.input {
+  outline: none;
+  border: 1px solid main.$color-border-regular;
+  border-radius: 8px;
+  padding: 10px 12px;
+  width: 100%;
+  height: 40px;
+  color: main.$color-text-primary;
+  font-size: main.$font-medium;
+  letter-spacing: 0.3px;
+
+  &:hover {
+    border-color: main.$color-border-hover;
+  }
+
+  &:focus {
+    border-width: 2px;
+    border-color: main.$color-border-focus;
+  }
+
+  &__error {
+    border-color: main.$color-error;
+  }
+}

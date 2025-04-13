@@ -1,0 +1,8 @@
+@use '/src/shared/styles/abstracts/variables' as main;
+
+.card {
+  position: relative;
+  box-shadow: main.$shadow;
+  border-radius: 16px;
+  background-color: main.$color-bg-secondary;
+}

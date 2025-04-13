@@ -1,0 +1,10 @@
+@use '@shared/styles/main' as main;
+
+.editor {
+  gap: 18px;
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+  }
+}

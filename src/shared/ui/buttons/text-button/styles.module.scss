@@ -1,0 +1,56 @@
+@use '@shared/styles/main' as main;
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: main.$font-small;
+  letter-spacing: 0.48px;
+
+  &:disabled {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+}
+
+.filled {
+  background-color: main.$color-bg-dark-primary;
+  color: main.$color-icon-button-bg-primary-hover;
+
+  &:hover {
+    background: main.$color-text-button-bg-primary-hover;
+  }
+  &:active {
+    background: main.$color-text-button-bg-primary-active;
+  }
+}
+
+.outlined {
+  border-color: main.$color-text-button-border-primary;
+  color: main.$color-text-primary;
+
+  &:hover {
+    border-color: main.$color-text-button-border-primary-hover;
+    color: main.$color-text-button-border-primary-active;
+  }
+  &:active {
+    border-color: main.$color-text-button-border-primary-active;
+    color: main.$color-text-button-border-primary-active;
+  }
+}
+
+.medium {
+  padding: 10px 12px;
+  width: 148px;
+  height: 40px;
+}
+
+.small {
+  padding: 6px 8px;
+  width: 73px;
+  height: 28px;
+}

@@ -1,0 +1,27 @@
+@use '@shared/styles/main' as main;
+
+.home {
+  padding-top: 50px;
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    color: main.$color-text-secondary;
+    font-size: 18px;
+    &::before {
+      content: '-';
+    }
+  }
+
+  p {
+    padding-bottom: 10px;
+  }
+  .warn {
+    color: main.$color-error;
+  }
+  .warn + p {
+    font-weight: 700;
+    font-size: main.$font-small;
+  }
+}

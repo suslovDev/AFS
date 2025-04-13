@@ -1,0 +1,7 @@
+@use '@shared/styles/main' as main;
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

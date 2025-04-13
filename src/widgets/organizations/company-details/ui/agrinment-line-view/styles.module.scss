@@ -1,0 +1,6 @@
+@use '@shared/styles/main' as main;
+
+.separator {
+  padding: 0 12px;
+  color: main.$color-text-secondary;
+}

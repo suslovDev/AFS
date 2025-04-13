@@ -1,0 +1,39 @@
+@use '@shared/styles/main' as main;
+
+.form {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  height: 188px;
+
+  &__heading {
+    font-weight: 700;
+    font-size: main.$font-medium;
+    letter-spacing: 0.3px;
+    text-align: center;
+  }
+
+  &__content {
+    display: flex;
+    position: relative;
+    top: -4px;
+    justify-content: center;
+    font-size: main.$font-small;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    text-align: center;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.error {
+  padding: 24px;
+  color: main.$color-error;
+}

@@ -1,2 +1,1 @@
-export { formatPhoneNumber } from './formatPhoneNumber';
-export { parseIdToPhone } from './parseIdToPhone';
+export { formatCompanyType, toSnakeCase } from './organization/format-company-type';

@@ -1,24 +1,19 @@
 import cn from 'classnames';
-import { ButtonHTMLAttributes, ReactElement } from 'react';
+import { ButtonHTMLAttributes, forwardRef } from 'react';
 import st from './styles.module.scss';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'dark' | 'light';
-  size?: 'medium' | 'large';
-  children: ReactElement;
+  size?: 'medium' | 'small';
   className?: string;
+  children?: React.ReactNode;
 }
 
-export const IconButton = ({
-  variant = 'dark',
-  size = 'medium',
-  children,
-  className,
-  ...props
-}: Props): JSX.Element => {
-  return (
-    <button className={cn(className, st.btn, st[variant], st[size])} {...props}>
-      {children}
-    </button>
-  );
-};
+export const IconButton = forwardRef<Props, any>(
+  ({ children, size = 'medium', className, ...props }, ref) => {
+    return (
+      <button ref={ref} className={cn(st.btn, st[size], className)} {...props}>
+        {children}
+      </button>
+    );
+  }
+);

@@ -1,0 +1,26 @@
+@use '@shared/styles/main' as main;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 0 32px 0;
+}
+
+.back {
+  position: absolute;
+  left: -64px;
+}
+
+.heading {
+  font-weight: 500;
+  letter-spacing: 0.25px;
+}
+
+.actions {
+  display: flex;
+}
+
+.red {
+  color: red;
+}

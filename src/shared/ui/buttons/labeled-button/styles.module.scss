@@ -1,0 +1,84 @@
+@use '@shared/styles/main' as main;
+
+.btn {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: main.$font-small;
+
+  &.filled {
+    background-color: main.$color-bg-dark-primary;
+    color: main.$color-icon-button-bg-primary-hover;
+
+    &:hover {
+      background: main.$color-text-button-bg-primary-hover;
+    }
+
+    &:active {
+      background: main.$color-text-button-bg-primary-active;
+    }
+  }
+
+  &.outlined {
+    border-color: main.$color-text-button-border-primary;
+    color: main.$color-text-primary;
+
+    &:hover {
+      border-color: main.$color-text-button-border-primary-hover;
+      color: main.$color-text-button-border-primary-active;
+    }
+
+    &:active {
+      border-color: main.$color-text-button-border-primary-active;
+      color: main.$color-text-button-border-primary-active;
+    }
+  }
+
+  &.medium {
+    justify-content: space-between;
+    padding: 12px;
+    width: 148px;
+    height: 40px;
+
+    & .icon {
+      display: flex;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+    }
+
+    & .children {
+      display: flex;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &.small {
+    justify-content: center;
+    gap: 12px;
+    padding: 4px 12px 4px 8px;
+    height: 28px;
+    font-size: main.$font-caption;
+
+    & .icon {
+      display: flex;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+    }
+
+    & .children {
+      display: flex;
+    }
+  }
+}
+.fullWidth {
+  width: 100% !important;
+}

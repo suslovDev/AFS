@@ -1,0 +1,28 @@
+@use '@shared/styles/main' as main;
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: main.$shadow;
+  border-radius: 16px;
+  padding: 23px 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 28px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: main.$font-medium;
+  letter-spacing: 0.3px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}

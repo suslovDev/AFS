@@ -1,13 +1,17 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { StartNewChat } from '@features/start-new-chat';
-import { AuthPage, ChatPage } from '../../pages';
-import { useAuth } from './auth';
+import { AuthPage } from '@pages/auth-page';
+import { ClientsPage } from '@pages/clients-page';
+import { ContractorsPage } from '@pages/contractors-page';
+import { HomePage } from '@pages/home-page';
+import { Layout } from '@pages/layout';
+import { OrganizationsPage } from '@pages/organizations';
+import { useAuth } from '@features/auth';
 
 const PrivateRoute: React.FC<{ element: React.ReactElement }> = ({ element }) => {
   const { isAuth } = useAuth();
 
   if (!isAuth) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/auth" replace />;
   }
 
   return element;
@@ -16,9 +20,13 @@ const PrivateRoute: React.FC<{ element: React.ReactElement }> = ({ element }) =>
 export const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<PrivateRoute element={<StartNewChat />} />} />
-      <Route path="chat/:id" element={<PrivateRoute element={<ChatPage />} />} />
-      <Route path="/login" element={<AuthPage />} />
+      <Route path="/" element={<Layout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="organizations" element={<PrivateRoute element={<OrganizationsPage />} />} />
+        <Route path="contractors" element={<ContractorsPage />} />
+        <Route path="clients" element={<PrivateRoute element={<ClientsPage />} />} />
+      </Route>
+      <Route path="auth" element={<AuthPage />} />
     </Routes>
   );
 };

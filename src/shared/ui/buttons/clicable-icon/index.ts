@@ -1,0 +1,1 @@
+export { ClicableIcon } from './ui';

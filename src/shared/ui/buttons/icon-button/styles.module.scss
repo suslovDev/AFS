@@ -1,28 +1,32 @@
-@use '/src/shared/styles/abstracts/variables' as main;
+@use '@shared/styles/main' as main;
 
 .btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  background-color: inherit;
-  width: 40px;
-  height: 40px;
+  border-radius: 8px;
+  background-color: main.$color-bg-dark-primary;
+  color: main.$color-icon-button-bg-primary-hover;
 
-  &.dark {
-    color: main.$color-text-placeholder;
+  &.medium {
+    width: 36px;
+    height: 36px;
   }
 
-  &.light {
-    color: main.$color-bg-primary;
-  }
+  &.small {
+    width: 28px;
+    height: 28px;
 
-  &.large {
     svg {
-      width: 30px;
-      height: 30px;
+      width: 16px;
+      height: 16px;
     }
+  }
+
+  &:hover {
+    background: main.$color-text-button-bg-primary-hover;
+  }
+  &:active {
+    background: main.$color-text-button-bg-primary-active;
   }
 }

@@ -1,0 +1,10 @@
+.block {
+  padding-right: 32px;
+  padding-left: 32px;
+}
+
+.photos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}

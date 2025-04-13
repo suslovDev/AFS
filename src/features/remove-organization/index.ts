@@ -1,0 +1,1 @@
+export { DialogRemove } from './ui';

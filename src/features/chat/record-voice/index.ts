@@ -1,1 +1,0 @@
-export { RecordVoice } from './ui';

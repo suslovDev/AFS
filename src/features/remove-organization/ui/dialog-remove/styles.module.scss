@@ -1,0 +1,34 @@
+@use '@shared/styles/main' as main;
+
+.modal {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  height: 188px;
+}
+
+.heading {
+  font-weight: 700;
+  font-size: main.$font-medium;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  position: relative;
+  top: -4px;
+  justify-content: center;
+  font-size: main.$font-small;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

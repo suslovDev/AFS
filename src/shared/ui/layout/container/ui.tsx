@@ -1,12 +1,17 @@
 import cn from 'classnames';
-import { ReactElement } from 'react';
+import React from 'react';
 import st from './styles.module.scss';
 
 type Props = {
-  children?: ReactElement;
+  children?: React.ReactNode | React.ReactNodeArray;
+  style?: React.CSSProperties;
   className?: string;
 };
 
-export const Container = ({ children, className }: Props): JSX.Element => {
-  return <div className={cn(st.container, className)}>{children}</div>;
+export const Container: React.FC<Props> = ({ children, style, className }) => {
+  return (
+    <div className={cn(st.container, className)} style={style}>
+      {children}
+    </div>
+  );
 };

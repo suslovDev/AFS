@@ -1,0 +1,21 @@
+@use '@shared/styles/main' as main;
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+
+  &.medium {
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+  }
+
+  &:hover {
+    background: main.$color-icon-button-bg-primary-hover;
+  }
+  &:active {
+    background: main.$color-icon-button-bg-primary-active;
+  }
+}

@@ -1,4 +1,11 @@
+@use '@shared/styles/main' as main;
+
 .container {
+  position: relative;
+  margin: 0 auto;
+  /*   background-color: azure; */
   width: 100%;
-  max-width: 1740px;
+  //Стили контейнера
+  max-width: 640px;
+  /*  overflow: hidden; */
 }

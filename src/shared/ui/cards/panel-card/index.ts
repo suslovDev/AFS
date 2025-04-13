@@ -1,1 +1,0 @@
-export { PanelCard } from './ui';

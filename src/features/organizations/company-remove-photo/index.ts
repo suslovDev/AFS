@@ -1,0 +1,1 @@
+export { removePhoto } from './models';

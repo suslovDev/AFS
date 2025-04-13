@@ -1,1 +1,0 @@
-export { OpponentInfo } from './ui';
