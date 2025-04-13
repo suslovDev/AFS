@@ -2,7 +2,7 @@ import cn from 'classnames';
 import React from 'react';
 import st from './styles.module.scss';
 
-interface Props extends React.HTMLAttributes<HTMLDivElement> {
+interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   startIcon?: JSX.Element;
   variant?: 'filled' | 'outlined';
   size?: 'medium' | 'small';
@@ -21,12 +21,12 @@ export const LabeledButton: React.FC<Props> = ({
   ...props
 }) => {
   return (
-    <div
+    <button
       className={cn(st.btn, st[variant], st[size], fullWidth && st.fullWidth, className)}
       {...props}
     >
       {startIcon && <div className={st.icon}>{startIcon}</div>}
       {children && <div className={st.children}>{children}</div>}
-    </div>
+    </button>
   );
 };

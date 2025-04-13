@@ -11,6 +11,9 @@
 .wrap {
   position: relative;
   color: main.$color-text-primary;
+  &:hover {
+    border-color: main.$color-border-hover;
+  }
 }
 
 .display {
@@ -24,6 +27,16 @@
   padding: 10px 12px;
   width: 420px;
   height: 40px;
+
+  &:hover {
+    border-color: main.$color-border-hover;
+  }
+
+  &:focus {
+    outline: none;
+    border-width: 2px;
+    border-color: main.$color-border-focus;
+  }
 }
 
 .dropdown {

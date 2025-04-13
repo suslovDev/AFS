@@ -22,11 +22,18 @@ export const Selector = ({ initialValue, options, onChange, isMultible = true }:
     isActive,
   } = useSelect(onChange, initialValue);
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === ' ' || event.key === 'Enter') {
+      event.preventDefault();
+      toggleDropdown();
+    }
+  };
+
   return (
     <>
       <div className={cn(isOpen && st.overlay)} onClick={toggleDropdown} />
       <div className={st.wrap}>
-        <div onClick={toggleDropdown} className={st.display}>
+        <div onClick={toggleDropdown} onKeyDown={handleKeyDown} className={st.display} tabIndex={0}>
           <span className={st.field}>{selectedItem || selectedItems?.join(', ')}</span>
           <span className={st.icon}>{!isOpen ? <ArrowDown /> : <ArrowUp />}</span>
         </div>

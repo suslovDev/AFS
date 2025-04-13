@@ -31,61 +31,58 @@ export const DetailsEdit = ({ details, onCanselClick, onSaveClick }: Props) => {
   };
 
   return (
-    <BlockInfo
-      childrenClassName={st.editor}
-      title="Company Details"
-      Action={
-        <div className={st.editor__actions}>
-          <LabeledButton
-            size="small"
-            variant="outlined"
-            startIcon={<Check />}
-            onClick={handleSaveClick}
-          >
-            Save changes
-          </LabeledButton>
-          <LabeledButton
-            size="small"
-            variant="outlined"
-            startIcon={<Cross />}
-            onClick={onCanselClick}
-          >
-            Cancel
-          </LabeledButton>
-        </div>
-      }
-    >
-      <AgrinmentLineEdit
-        number={contractNumber}
-        date={date}
-        setDate={setDate}
-        setNumber={setContractNumber}
-      />
-      <LineInfo
-        title="Business entity"
-        content={
-          <Selector
-            initialValue={[initEnityValue]}
-            isMultible={false}
-            onChange={setEntity}
-            options={['Partnership']}
-          />
+    <form onSubmit={handleSaveClick}>
+      <BlockInfo
+        childrenClassName={st.editor}
+        title="Company Details"
+        Action={
+          <div className={st.editor__actions}>
+            <LabeledButton type="submit" size="small" variant="outlined" startIcon={<Check />}>
+              Save changes
+            </LabeledButton>
+            <LabeledButton
+              size="small"
+              variant="outlined"
+              startIcon={<Cross />}
+              onClick={onCanselClick}
+            >
+              Cancel
+            </LabeledButton>
+          </div>
         }
-      />
-      <LineInfo
-        title="Company type"
-        content={
-          <Selector
-            onChange={setCompanyType}
-            initialValue={initCompanyTypeValue}
-            options={formatCompanyType([
-              'funeral_home',
-              'logistics_services',
-              'burial_care_contractor',
-            ])}
-          />
-        }
-      />
-    </BlockInfo>
+      >
+        <AgrinmentLineEdit
+          number={contractNumber}
+          date={date}
+          setDate={setDate}
+          setNumber={setContractNumber}
+        />
+        <LineInfo
+          title="Business entity"
+          content={
+            <Selector
+              initialValue={[initEnityValue]}
+              isMultible={false}
+              onChange={setEntity}
+              options={['Partnership']}
+            />
+          }
+        />
+        <LineInfo
+          title="Company type"
+          content={
+            <Selector
+              onChange={setCompanyType}
+              initialValue={initCompanyTypeValue}
+              options={formatCompanyType([
+                'funeral_home',
+                'logistics_services',
+                'burial_care_contractor',
+              ])}
+            />
+          }
+        />
+      </BlockInfo>
+    </form>
   );
 };
