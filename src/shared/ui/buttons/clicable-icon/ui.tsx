@@ -8,7 +8,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
 }
 
-export const ClicableIcon = forwardRef<Props, any>(
+export const ClicableIcon = forwardRef<HTMLButtonElement, Props>(
   ({ size = 'medium', children, className, ...props }, ref) => {
     return (
       <button ref={ref} className={cn(st.btn, st[size], className)} {...props}>
