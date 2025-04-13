@@ -2,7 +2,7 @@ import cn from 'classnames';
 import React from 'react';
 import st from './styles.module.scss';
 
-interface Props extends React.HTMLAttributes<HTMLButtonElement> {
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   startIcon?: JSX.Element;
   variant?: 'filled' | 'outlined';
   size?: 'medium' | 'small';

@@ -1,6 +1,6 @@
 import { organizationStore } from '@entities/organization';
 import axios, { AxiosError } from 'axios';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import api from '@shared/config/api';
 import { Organization } from '@shared/types';
 import { formatCompanyType } from '@shared/utils';
@@ -8,7 +8,11 @@ import { COMPANY_API } from '../api';
 
 export const updateOrganization = async (id: string, data: Partial<Organization>) => {
   try {
-    const response = await api.patch(`${COMPANY_API}/${id}`, JSON.stringify(data));
+    const response = await api.patch(`${COMPANY_API}/${id}`, JSON.stringify(data), {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     const updatedDetails = response.data;
     organizationStore.updateOrganization(updatedDetails);
   } catch (error) {
@@ -55,4 +59,40 @@ export const useEditDitails = (details: Organization) => {
     initCompanyTypeValue: formatedCompanyType,
     updateDetails,
   };
+};
+
+export const useFormKeyEvents = (
+  onSave: () => void,
+  onCansel: () => void,
+  updateDetails: () => void
+) => {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    updateDetails();
+    onSave();
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (!formRef.current) {
+      return;
+    }
+    if (e.key === 'Enter') {
+      e.preventDefault();
+
+      handleSubmit(e as unknown as React.FormEvent<HTMLFormElement>);
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      onCansel();
+    }
+  };
+
+  useEffect(() => {
+    if (formRef.current) {
+      formRef.current.focus();
+    }
+  }, []);
+
+  return { formRef, handleKeyDown, handleSubmit };
 };

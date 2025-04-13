@@ -3,7 +3,7 @@ import { Organization } from '@shared/types';
 import { BlockInfo, LabeledButton, LineInfo, Selector } from '@shared/ui';
 import { formatCompanyType } from '@shared/utils';
 import { AgrinmentLineEdit } from '../../../widgets/organizations/company-details/ui/agrinment-line-edit';
-import { useEditDitails } from './model';
+import { useEditDitails, useFormKeyEvents } from './model';
 import st from './styles.module.scss';
 
 interface Props {
@@ -25,13 +25,14 @@ export const DetailsEdit = ({ details, onCanselClick, onSaveClick }: Props) => {
     updateDetails,
   } = useEditDitails(details);
 
-  const handleSaveClick = () => {
-    updateDetails();
-    onSaveClick();
-  };
+  const { formRef, handleKeyDown, handleSubmit } = useFormKeyEvents(
+    onSaveClick,
+    onCanselClick,
+    updateDetails
+  );
 
   return (
-    <form onSubmit={handleSaveClick}>
+    <form ref={formRef} onSubmit={handleSubmit} onKeyDown={handleKeyDown} tabIndex={-1}>
       <BlockInfo
         childrenClassName={st.editor}
         title="Company Details"
