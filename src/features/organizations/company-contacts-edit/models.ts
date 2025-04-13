@@ -13,14 +13,17 @@ export const useEditContact = (contact: Contact) => {
 
   const updateContact = async () => {
     try {
-      const contactToUpdate: Contact = {
-        id,
+      const contactToUpdate: Partial<Contact> = {
         email: emailValue,
         firstname: nameValue.split(' ')[1],
         lastname: nameValue.split(' ')[0],
         phone: phoneValue,
       };
-      const response = await api.patch(`${CONTACTS_API}/${id}`, JSON.stringify(contactToUpdate));
+      const response = await api.patch(`${CONTACTS_API}/${id}`, JSON.stringify(contactToUpdate), {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       const updatedContact = response.data;
       contactStore.updateContact(updatedContact);
     } catch (error) {
