@@ -11,7 +11,7 @@ interface Props {
 
 export const DialogChange = ({ isOpen = false, value, onSave, onCancel, onChange }: Props) => {
   return (
-    <CommonModal isOpen={isOpen}>
+    <CommonModal isOpen={isOpen} onRequestClose={onCancel}>
       <div className={st.modal}>
         <h3 className={st.heading}>Specify the Organization's name</h3>
 
