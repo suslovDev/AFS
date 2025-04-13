@@ -1,6 +1,7 @@
 import { Check, Cross } from '@shared/icons';
 import { Contact } from '@shared/types';
 import { BlockInfo, LabeledButton, LineInfo, TextInput } from '@shared/ui';
+import { useFormKeyEvents } from '../company-details-edit/model';
 import { useEditContact } from './models';
 import st from './styles.module.scss';
 
@@ -21,48 +22,46 @@ export const ContactsEdit = ({ contacts, onCanselClick, onSaveClick }: Props) =>
     updateContact,
   } = useEditContact(contacts);
 
-  const handleSaveClick = () => {
-    updateContact();
-    onSaveClick();
-  };
+  const { formRef, handleKeyDown, handleSubmit } = useFormKeyEvents(
+    onSaveClick,
+    onCanselClick,
+    updateContact
+  );
 
   return (
-    <BlockInfo
-      childrenClassName={st.editor}
-      title="Contacts"
-      Action={
-        <div className={st.editor__actions}>
-          <LabeledButton
-            size="small"
-            variant="outlined"
-            startIcon={<Check />}
-            onClick={handleSaveClick}
-          >
-            Save changes
-          </LabeledButton>
-          <LabeledButton
-            size="small"
-            variant="outlined"
-            startIcon={<Cross />}
-            onClick={onCanselClick}
-          >
-            Cancel
-          </LabeledButton>
-        </div>
-      }
-    >
-      <LineInfo
-        title="Responsible person"
-        content={<TextInput value={nameValue} onChange={(e) => setNameValue(e.target.value)} />}
-      />
-      <LineInfo
-        title="Phone number"
-        content={<TextInput value={phoneValue} onChange={(e) => setPhoneValue(e.target.value)} />}
-      />
-      <LineInfo
-        title="E-mail"
-        content={<TextInput value={emailValue} onChange={(e) => setEmailValue(e.target.value)} />}
-      />
-    </BlockInfo>
+    <form ref={formRef} onSubmit={handleSubmit} onKeyDown={handleKeyDown} tabIndex={-1}>
+      <BlockInfo
+        childrenClassName={st.editor}
+        title="Contacts"
+        Action={
+          <div className={st.editor__actions}>
+            <LabeledButton type="submit" size="small" variant="outlined" startIcon={<Check />}>
+              Save changes
+            </LabeledButton>
+            <LabeledButton
+              size="small"
+              variant="outlined"
+              startIcon={<Cross />}
+              onClick={onCanselClick}
+            >
+              Cancel
+            </LabeledButton>
+          </div>
+        }
+      >
+        <LineInfo
+          title="Responsible person"
+          content={<TextInput value={nameValue} onChange={(e) => setNameValue(e.target.value)} />}
+        />
+        <LineInfo
+          title="Phone number"
+          content={<TextInput value={phoneValue} onChange={(e) => setPhoneValue(e.target.value)} />}
+        />
+        <LineInfo
+          title="E-mail"
+          content={<TextInput value={emailValue} onChange={(e) => setEmailValue(e.target.value)} />}
+        />
+      </BlockInfo>
+    </form>
   );
 };
