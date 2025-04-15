@@ -5,5 +5,5 @@ export { Selector } from './selectors';
 export { Checkbox } from './checkboxes';
 export { CommonModal } from './modals';
 export { Container } from './layout';
-export { BlockInfo, LineInfo } from './blocks';
+export { BlockInfo, LineInfo, EditorAction } from './blocks';
 export { Loader } from './loader';

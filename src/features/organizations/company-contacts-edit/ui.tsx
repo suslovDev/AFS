@@ -1,6 +1,5 @@
-import { Check, Cross } from '@shared/icons';
 import { Contact } from '@shared/types';
-import { BlockInfo, LabeledButton, LineInfo, TextInput } from '@shared/ui';
+import { BlockInfo, EditorAction, LineInfo, TextInput } from '@shared/ui';
 import { useFormKeyEvents } from '../company-details-edit/model';
 import { useEditContact } from './models';
 import st from './styles.module.scss';
@@ -35,17 +34,7 @@ export const ContactsEdit = ({ contacts, onCanselClick, onSaveClick }: Props) =>
         title="Contacts"
         Action={
           <div className={st.editor__actions}>
-            <LabeledButton type="submit" size="small" variant="outlined" startIcon={<Check />}>
-              Save changes
-            </LabeledButton>
-            <LabeledButton
-              size="small"
-              variant="outlined"
-              startIcon={<Cross />}
-              onClick={onCanselClick}
-            >
-              Cancel
-            </LabeledButton>
+            <EditorAction onCansel={onCanselClick} />
           </div>
         }
       >

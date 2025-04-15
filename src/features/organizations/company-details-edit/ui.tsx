@@ -1,6 +1,5 @@
-import { Check, Cross } from '@shared/icons';
 import { Organization } from '@shared/types';
-import { BlockInfo, LabeledButton, LineInfo, Selector } from '@shared/ui';
+import { BlockInfo, EditorAction, LineInfo, Selector } from '@shared/ui';
 import { formatCompanyType } from '@shared/utils';
 import { AgrinmentLineEdit } from '../../../widgets/organizations/company-details/ui/agrinment-line-edit';
 import { useEditDitails, useFormKeyEvents } from './model';
@@ -38,17 +37,7 @@ export const DetailsEdit = ({ details, onCanselClick, onSaveClick }: Props) => {
         title="Company Details"
         Action={
           <div className={st.editor__actions}>
-            <LabeledButton type="submit" size="small" variant="outlined" startIcon={<Check />}>
-              Save changes
-            </LabeledButton>
-            <LabeledButton
-              size="small"
-              variant="outlined"
-              startIcon={<Cross />}
-              onClick={onCanselClick}
-            >
-              Cancel
-            </LabeledButton>
+            <EditorAction onCansel={onCanselClick} />
           </div>
         }
       >
