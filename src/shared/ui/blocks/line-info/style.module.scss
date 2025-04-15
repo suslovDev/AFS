@@ -5,8 +5,15 @@
   align-items: center;
   height: 34px;
 
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+  }
+
   &__title {
     width: 100%;
+    min-width: 172px;
     max-width: 172px;
     color: main.$color-text-secondary;
     font-size: main.$font-small;
@@ -15,10 +22,5 @@
   &__content {
     width: 100%;
     letter-spacing: 0.3px;
-
-    /*     span {
-      padding: 0 12px;
-      color: main.$color-text-secondary;
-    } */
   }
 }

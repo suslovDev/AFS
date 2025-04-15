@@ -3,9 +3,10 @@
 .container {
   position: relative;
   margin: 0 auto;
-  /*   background-color: azure; */
   width: 100%;
-  //Стили контейнера
   max-width: 640px;
-  /*  overflow: hidden; */
+
+  @media screen and (max-width: 1100px) {
+    padding-top: 24px;
+  }
 }

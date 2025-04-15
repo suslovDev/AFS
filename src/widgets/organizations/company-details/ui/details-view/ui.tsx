@@ -4,6 +4,7 @@ import { Organization } from '@shared/types';
 import { BlockInfo, LabeledButton, LineInfo } from '@shared/ui';
 import { formatCompanyType } from '@shared/utils';
 import { AgreementLineView } from '../agrinment-line-view';
+import st from './styles.module.scss';
 
 interface Props {
   onEditClick: () => void;
@@ -31,7 +32,7 @@ export const DetailsView = ({ details, onEditClick }: Props) => {
     >
       <LineInfo title="Agreement" content={<AgreementLineView number={no} date={formatedDate} />} />
       {businessEntity && <LineInfo title="Business entity" content={businessEntity} />}
-      <LineInfo title="Company type" content={companyType} />
+      <LineInfo title="Company type" content={<div className={st.content}>{companyType}</div>} />
     </BlockInfo>
   );
 };

@@ -1,6 +1,11 @@
 .block {
   padding-right: 32px;
   padding-left: 32px;
+
+  @media screen and (max-width: 391px) {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
 }
 
 .photos {

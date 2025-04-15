@@ -4,7 +4,7 @@ import { ClientsPage } from '@pages/clients-page';
 import { ContractorsPage } from '@pages/contractors-page';
 import { HomePage } from '@pages/home-page';
 import { Layout } from '@pages/layout';
-import { OrganizationsPage } from '@pages/organizations';
+import { OrganizationsPage } from '@pages/organizations-page';
 import { useAuth } from '@features/auth';
 
 const PrivateRoute: React.FC<{ element: React.ReactElement }> = ({ element }) => {

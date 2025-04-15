@@ -1,0 +1,14 @@
+@use '@shared/styles/main' as main;
+
+.navigation {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  gap: 20px;
+  z-index: 50;
+  margin-bottom: 50px;
+  background-color: main.$color-bg-dark-primary;
+  padding: 3px 12px;
+  width: 100%;
+  color: main.$color-bg-secondary;
+}
